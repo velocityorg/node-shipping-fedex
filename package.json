@@ -1,30 +1,100 @@
 {
-  "name": "shipping-fedex",
-  "version": "0.1.1",
-  "description": "FedEx API bindings for Node.JS",
-  "author": {
-    "name": "uh-sem-blee, Co. | typefoo",
-    "email": "hello@typefoo.com"
+  "_from": "node-shipping-fedex",
+  "_id": "node-shipping-fedex@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-hlcQgUHTK4NvWUJReqL/fsXcjZ4=",
+  "_location": "/node-shipping-fedex",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "node-shipping-fedex",
+    "name": "node-shipping-fedex",
+    "escapedName": "node-shipping-fedex",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
-  "maintainers": [
-    {
-      "name": "jjosef",
-      "email": "john.josef@gmail.com"
-    }
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
+  "_resolved": "https://registry.npmjs.org/node-shipping-fedex/-/node-shipping-fedex-1.0.0.tgz",
+  "_shasum": "8657108141d32b836f5942517aa2ff7ec5dc8d9e",
+  "_spec": "node-shipping-fedex",
+  "_where": "D:\\Data\\Desktop",
+  "author": {
+    "name": "Vincent Tellier",
+    "email": "vincent@great-seal.co"
+  },
+  "bugs": {
+    "url": "https://github.com/vtllr/node-shipping-fedex/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "lodash": "4.17.4",
+    "soap": "0.9.4",
+    "xml2js": "0.4.12"
+  },
+  "deprecated": false,
+  "description": "FedEx API for Node.JS",
+  "devDependencies": {
+    "@types/chai": "4.0.3",
+    "@types/mocha": "2.2.41",
+    "@types/node": "8.0.22",
+    "awesome-typescript-loader": "3.2.3",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "body-parser": "1.16.1",
+    "chai": "4.1.1",
+    "copy-webpack-plugin": "4.0.1",
+    "dotenv": "4.0.0",
+    "express": "4.15.4",
+    "istanbul": "0.4.5",
+    "jshint": "2.9.5",
+    "lodash": "4.17.4",
+    "mocha": "3.5.0",
+    "nyc": "11.1.0",
+    "ts-node": "3.3.0",
+    "tslint": "5.6.0",
+    "typescript": "2.4.2",
+    "webpack": "3.5.4",
+    "winston": "2.3.1"
+  },
+  "homepage": "https://github.com/vtllr/node-shipping-fedex#readme",
+  "license": "ISC",
+  "main": "./dist/index.js",
+  "name": "node-shipping-fedex",
+  "nyc": {
+    "include": [
+      "lib/*.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/typefoo/node-shipping-fedex"
+    "url": "git+https://github.com/vtllr/node-shipping-fedex.git"
   },
-  "main": "./lib/index.js",
-  "directories": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && webpack --progress --colors",
+    "clean": "rm -rf dist/",
+    "coverage": "nyc npm t",
+    "jshint": "jshint ./",
+    "linters": "npm run jshint && npm run tslint",
+    "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "test": "mocha -r ts-node/register test/tracking.ts --timeout 5000",
+    "tslint": "tslint ./lib/"
   },
-  "license": "MIT",
-  "dependencies": {
-    "extend": "~1.2.1",
-    "xmlbuilder": "~2.1.0",
-    "xml2json": "~0.6.1"
-  }
+  "version": "1.0.0"
 }

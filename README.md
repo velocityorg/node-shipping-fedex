@@ -1,34 +1,83 @@
-#shipping-ups
+# Node Shipping FedEx
 
 ## Install
-
-`npm install shipping-fedex`
+```
+npm i node-shipping-fedex
+```
 
 ## Usage
 
+### Init
 ```js
-  var fedexAPI = require('shipping-fedex');
+import FedExAPI from 'node-shipping-fedex';
 
-  var fedex = new upsFedex({
-    environment: 'sandbox', // or live
-    key: 'FEDEXKEY',
-    password: 'FEDEXPASSWORD',
-    account_number: 'FEDEXACCOUNTNUMBER',
-    meter_number: 'FEDEXMETERNUMBER',
-    imperial: true // set to false for metric
-  });
+const fedex = new FedExAPI({
+  environment: 'sandbox', // or live
+  debug: true,
+  key: '',
+  password: '',
+  account_number: '',
+  meter_number: '',
+  imperial: true // set to false for metric
+});
 ```
 
-See `example/index.js` for a working sample.
+### Address validation
+See params [here](test/utils/address.ts)
+```js
+fedex.addressvalidation(params, cb)
+```
 
-## License
+### Availability
+See params [here](test/utils/availability.ts)
+```js
+fedex.availability(params, cb)
+```
 
-(The MIT License)
+### Close
+See params [here](test/utils/close.ts)
+```js
+// Close ground shipment
+fedex.groundclose(params, cb)
 
-Copyright 2014 uh-sem-blee, Co. All rights reserved.
+// Close smart shipment
+fedex.smartpostclose(params, cb)
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+### Pick up
+See params [here](test/utils/pickup.ts)
+```js
+// Get pickup availability
+fedex.pickupAvailability(params, cb)
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// Create pickup
+fedex.smartpostclose(params, cb)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// Delete pickup
+fedex.cancelPickup(params, cb)
+```
+
+### Rates
+See params [here](test/utils/rates.ts)
+```js
+fedex.rates(params, cb)
+```
+
+### Shipment
+See params [here](test/utils/shipment.ts)
+```js
+// Create shipment
+fedex.ship(params, cb)
+
+// Delete shipment
+fedex.deleteshipment(params, cb)
+```
+
+### Tracking
+See params [here](test/utils/tracking.ts)
+```js
+fedex.track(params, cb)
+```
+
+## Links
+[Official FedEx documentation](http://www.fedex.com/us/web-services/)
